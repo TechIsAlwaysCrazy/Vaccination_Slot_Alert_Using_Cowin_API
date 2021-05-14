@@ -17,7 +17,7 @@ class cowin_api:
         except Exception as e:
             print(e)
 
-        return "Today slot"
+      
 
     def get_weekly_slots(self,district_id):
         url=f'{self.api_check}/calendarByDistrict?district_id={district_id}&date={self.date_formatted}'
