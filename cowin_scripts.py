@@ -17,4 +17,4 @@ date_ref=datetime.datetime.now()
 if int(capacity) > 0:
   winsound.Beep(500, 1000) #it will make a beep
 print(f'{date_ref}=> Range From :{date},Age:{age},capacity:{capacity}')
-#while true; do C:/Users/rahul/AppData/Local/Programs/Python/Python39/python.exe cowin_scripts.py; sleep 100;done
+#while true; do python.exe cowin_scripts.py; sleep 100;done
