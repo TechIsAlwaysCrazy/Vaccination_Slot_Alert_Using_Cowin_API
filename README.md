@@ -1,1 +1,2 @@
-# shortapi_fetch_by_district_for_people
+
+##############USAGE python cowin_scripts.py --id <id of the district or multiple ids seperated by comma> ##############
