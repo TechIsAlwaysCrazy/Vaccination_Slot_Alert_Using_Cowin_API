@@ -17,7 +17,7 @@ def action(date,dist_id):
         available_capacity=session['available_capacity']
         if int(min_age_limit) == 18:
           if int(available_capacity) > 0:
-            winsound.Beep(400, 1000) #it will make a beep
+            winsound.Beep(400, 2000) #it will make a beep
           print(f'{date_ref}=> Range From :{date},distric_id:{dist_id} Center:{center_name} ,Age:{min_age_limit},Capacity:{available_capacity},Address:{center_address}')
   except Exception as e:
     print("Exception " + str(e))
@@ -27,9 +27,11 @@ headers = {
 }
 date= datetime.date.today().strftime("%d-%m-%Y")
 parser = argparse.ArgumentParser()
-parser.add_argument('-i','--id',type=int, help='Dsitrict ID', required=True)
+parser.add_argument('-i','--id',type=str, help='Dsitrict ID', required=True)
 args = parser.parse_args()
-action(date,args.id)
+for id in args.id.split(","):
+  action(date,int(id))
 
 
 
+##############USAGE python cowin_scripts.py --id <id of the district or multiple ids seperated by comma> ##############
