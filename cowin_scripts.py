@@ -2,7 +2,6 @@ import requests
 import datetime
 import winsound
 import argparse
-import msvcrt
 import time
 import colorama
 from colorama import Fore, Back, Style
