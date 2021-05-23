@@ -16,6 +16,7 @@ Intended to use for volunteers who are helping to figure out and help people for
  $ python cowin_scripts.py --id id1,id2 -a min_age(it can be 18 or 45) & default is 18.
  $ python cowin_scripts.py --id id1,id2 -s sleep_time (Default is 10 second)
  $ python cowin_scripts.py --id id1 -d <customer start date dd-mm-yyyy/default is todays date) 
+ $ python cowin_scripts.py --id id1,id2 -v 2 (For second dose only ,default is for both the dose)
  $ python cowin_scripts.py --id 305,307 -s 15 -a 45 -d 24-05-2021 (Filtering data for 45 age groups with a duration of 15 and a default starting date)
  
 ```
