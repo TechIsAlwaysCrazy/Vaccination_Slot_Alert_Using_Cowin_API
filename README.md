@@ -23,7 +23,7 @@ Intended to use for volunteers who are helping to figure out and help people for
 ```
 - Result
 
-![](sample.png)
+![](sample_v1.png)
 
 - All argeuments except --id /-i are optional.
 - Distric IDs can be fetch from cowin sites.
