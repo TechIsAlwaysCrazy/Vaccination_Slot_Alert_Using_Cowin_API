@@ -3,7 +3,7 @@ import datetime
 import winsound
 import argparse
 
-def action(date,dist_id):
+def action(date,dist_id,age):
   try:
     url = f'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id={dist_id}&date={date}'
     response = requests.get(url, headers=headers,timeout = 5)
@@ -15,7 +15,7 @@ def action(date,dist_id):
       for session in centers['sessions']:
         min_age_limit=session['min_age_limit']
         available_capacity=session['available_capacity']
-        if int(min_age_limit) == 18:
+        if int(min_age_limit) == age:
           if int(available_capacity) > 0:
             winsound.Beep(400, 2000) #it will make a beep
             winsound.Beep(200, 2000)
@@ -30,10 +30,11 @@ date= datetime.date.today().strftime("%d-%m-%Y")
 parser = argparse.ArgumentParser()
 parser.add_argument('-i','--id',type=str, help='Dsitrict ID', required=True)
 parser.add_argument('-d','--date',type=str,help='Custom start date',default=date)
+parser.add_argument('-a','--age',type=int,help="Minimum age",choices=[18,45],default=18)
 args = parser.parse_args()
 for id in args.id.split(","):
-  action(args.date,int(id))
+  action(args.date,int(id),args.age)
 
 
 
-##############USAGE python cowin_scripts.py --id <id of the district or multiple ids seperated by comma> ##############
+#####USAGE python cowin_scripts.py --id <id of the district or multiple ids seperated by comma> -a <Age/Optional and default is 18> -d <dd-mm-yy/optioanl/default is today's date>.#########
