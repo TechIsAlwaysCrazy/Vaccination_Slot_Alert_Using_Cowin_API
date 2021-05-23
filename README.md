@@ -17,6 +17,10 @@
  $ python cowin_scripts.py --id 305,307 -s 15 -a 45 -d 24-05-2021 (Filtering data for 45 age groups with a duration of 15 and a default starting date)
  
 ```
+- Result
+
+![](sample.png)
+
 - All argeuments except --id /-i are optional.
 - Distric IDs can be fetch from cowin sites.
 - It will beep if it identifies a slot & change the color of display (BLUE <10 and Green >10 capacities).
