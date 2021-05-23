@@ -1,5 +1,6 @@
 ### Vaccination slot Alert based on District IDs
--------------------------------------------------------------------------------------
+Intended to use for volunteers who are helping to figure out and help people for vaccination slots.
+---------------------------------------------------------------------------------------------------
 
 
 - Works with Python 3.6 and above.
