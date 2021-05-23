@@ -7,7 +7,18 @@ import time
 import colorama
 from colorama import Fore, Back, Style
 
-def action(date,dist_id,age):
+def print_details(date_ref,date,dist_id,center_name,min_age_limit,available_capacity,available_capacity_detailed,center_address):
+  if available_capacity ==0:
+    print(f'{date_ref}=> Range From :{date},distric_id:{dist_id} Center:{center_name} ,Age:{min_age_limit},Capacity:{available_capacity},Availbility_Dose:{available_capacity_detailed},Address:{center_address}')
+  elif available_capacity >10:
+    winsound.Beep(400, 2000) #it will make a beep
+    print(f'{Back.GREEN}{date_ref}=> Range From :{date},distric_id:{dist_id} Center:{center_name} ,Age:{min_age_limit},Capacity:{available_capacity},Availbility_Dose:{available_capacity_detailed},Address:{center_address}{Style.RESET_ALL}')
+  else:
+    winsound.Beep(600, 2000) #it will make a beep
+    print(f'{Back.GREEN}{date_ref}=> Range From :{date},distric_id:{dist_id} Center:{center_name} ,Age:{min_age_limit},Capacity:{available_capacity},Availbility_Dose:{available_capacity_detailed},Address:{center_address}{Style.RESET_ALL}')
+  
+
+def action(date,dist_id,age,dose):
   try:
     
     url = f'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id={dist_id}&date={date}'
@@ -19,18 +30,16 @@ def action(date,dist_id,age):
       center_address=centers['address']
       for session in centers['sessions']:
         min_age_limit=session['min_age_limit']
-        available_capacity=session['available_capacity']
+        if dose == 0:
+          available_capacity=session['available_capacity']
+          dose1_slots=session['available_capacity_dose1']
+          dose2_slots=session['available_capacity_dose2']
+          available_capacity_detailed=f"Dose1-{dose1_slots}/Dose2-{dose2_slots}"
+        else:
+          available_capacity=session[f'available_capacity_dose{dose}']
+          available_capacity_detailed=f"Dose{dose}-{available_capacity}"
         if int(min_age_limit) == age:
-          if int(available_capacity) > 0:
-            winsound.Beep(400, 2000) #it will make a beep
-            
-            if available_capacity < 10:
-              print(f'{Back.BLUE}{date_ref}=> Range From :{date},distric_id:{dist_id} Center:{center_name} ,Age:{min_age_limit},Capacity:{available_capacity},Address:{center_address}{Style.RESET_ALL}')
-            else:
-              print(f'{Back.GREEN}{date_ref}=> Range From :{date},distric_id:{dist_id} Center:{center_name} ,Age:{min_age_limit},Capacity:{available_capacity},Address:{center_address}{Style.RESET_ALL}')
-            winsound.Beep(200, 2000)
-          print(f'{date_ref}=> Range From :{date},distric_id:{dist_id} Center:{center_name} ,Age:{min_age_limit},Capacity:{available_capacity},Address:{center_address}')
-          
+          print_details(date_ref,date,dist_id,center_name,min_age_limit,available_capacity,available_capacity_detailed,center_address)
   except Exception as e:
     
     print("Exception " + str(e))
@@ -44,13 +53,13 @@ parser.add_argument('-i','--id',type=str, help='Dsitrict ID', required=True)
 parser.add_argument('-d','--date',type=str,help='Custom start date',default=date)
 parser.add_argument('-a','--age',type=int,help="Minimum age",choices=[18,45],default=18)
 parser.add_argument('-s','--sleep',type=int,help="Slpping time/default is 5sec",default=15)
+parser.add_argument('-v','--vdose',type=int,help="Vaccine dose 1 or 2",default=0,choices=[0,1,2])
 args = parser.parse_args()
 colorama.init()
 try:
   while True:
     for id in args.id.split(","):
-      action(args.date,int(id),args.age)
+      action(args.date,int(id),args.age,args.vdose)
     time.sleep(args.sleep)
 except KeyboardInterrupt:
     pass
-
