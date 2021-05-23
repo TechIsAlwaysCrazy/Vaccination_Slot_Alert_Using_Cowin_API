@@ -43,7 +43,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('-i','--id',type=str, help='Dsitrict ID', required=True)
 parser.add_argument('-d','--date',type=str,help='Custom start date',default=date)
 parser.add_argument('-a','--age',type=int,help="Minimum age",choices=[18,45],default=18)
-parser.add_argument('-s','--sleep',type=int,help="Slpping time/default is 5sec",default=5)
+parser.add_argument('-s','--sleep',type=int,help="Slpping time/default is 5sec",default=15)
 args = parser.parse_args()
 colorama.init()
 while True:
@@ -53,4 +53,3 @@ while True:
 
 
 
-#####USAGE python cowin_scripts.py --id <id of the district or multiple ids seperated by comma> -a <Age/Optional and default is 18> -d <dd-mm-yy/optioanl/default is today's date>.#########
