@@ -46,10 +46,11 @@ parser.add_argument('-a','--age',type=int,help="Minimum age",choices=[18,45],def
 parser.add_argument('-s','--sleep',type=int,help="Slpping time/default is 5sec",default=15)
 args = parser.parse_args()
 colorama.init()
-while True:
-  for id in args.id.split(","):
-    action(args.date,int(id),args.age)
-  time.sleep(args.sleep)
-
-
+try:
+  while True:
+    for id in args.id.split(","):
+      action(args.date,int(id),args.age)
+    time.sleep(args.sleep)
+except KeyboardInterrupt:
+    pass
 
