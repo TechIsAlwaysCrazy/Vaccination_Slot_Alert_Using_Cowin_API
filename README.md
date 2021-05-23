@@ -27,7 +27,7 @@ Intended to use for volunteers who are helping to figure out and help people for
 
 ![](sample_v1.png)
 
-- All argeuments except --id /-i are optional.
+- All argeuments except --id /-i & -m/--mode are optional.
 - Distric IDs can be fetch from cowin sites.
 - It will beep if it identifies a slot & change the color of display (BLUE <10 and Green >10 capacities).
 - This can be alter based on pin number as well ,refer cowin.py file here for clue .
