@@ -9,13 +9,13 @@ from colorama import Fore, Back, Style
 
 def print_details(date_ref,date,dist_id,center_name,min_age_limit,available_capacity,available_capacity_detailed,center_address):
   if available_capacity ==0:
-    print(f'{date_ref}=> Range From :{date},distric_id:{dist_id} Center:{center_name} ,Age:{min_age_limit},Capacity:{available_capacity},Availbility_Dose:{available_capacity_detailed},Address:{center_address}')
+    print(f'{date_ref}=> Range From :{date},distric_id:{dist_id} Center:{center_name} ,Age:{min_age_limit},Capacity:{available_capacity},Dose:{available_capacity_detailed},Address:{center_address}')
   elif available_capacity >10:
     winsound.Beep(400, 2000) #it will make a beep
-    print(f'{Back.GREEN}{date_ref}=> Range From :{date},distric_id:{dist_id} Center:{center_name} ,Age:{min_age_limit},Capacity:{available_capacity},Availbility_Dose:{available_capacity_detailed},Address:{center_address}{Style.RESET_ALL}')
+    print(f'{Back.GREEN}{date_ref}=> Range From :{date},distric_id:{dist_id} Center:{center_name} ,Age:{min_age_limit},Capacity:{available_capacity},Dose:{available_capacity_detailed},Address:{center_address}{Style.RESET_ALL}')
   else:
     winsound.Beep(600, 2000) #it will make a beep
-    print(f'{Back.GREEN}{date_ref}=> Range From :{date},distric_id:{dist_id} Center:{center_name} ,Age:{min_age_limit},Capacity:{available_capacity},Availbility_Dose:{available_capacity_detailed},Address:{center_address}{Style.RESET_ALL}')
+    print(f'{Back.GREEN}{date_ref}=> Range From :{date},distric_id:{dist_id} Center:{center_name} ,Age:{min_age_limit},Capacity:{available_capacity},Dose:{available_capacity_detailed},Address:{center_address}{Style.RESET_ALL}')
   
 
 def action(date,dist_id,age,dose):
@@ -63,3 +63,7 @@ try:
     time.sleep(args.sleep)
 except KeyboardInterrupt:
     pass
+
+
+
+#####USAGE python cowin_scripts.py --id <id of the district or multiple ids seperated by comma> -a <Age/Optional and default is 18> -d <dd-mm-yy/optioanl/default is today's date>.#########
