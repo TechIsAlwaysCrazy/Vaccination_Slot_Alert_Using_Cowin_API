@@ -23,9 +23,14 @@ def action(date,dist_id,age):
         if int(min_age_limit) == age:
           if int(available_capacity) > 0:
             winsound.Beep(400, 2000) #it will make a beep
+            
+            if available_capacity < 10:
+              print(f'{Back.BLUE}{date_ref}=> Range From :{date},distric_id:{dist_id} Center:{center_name} ,Age:{min_age_limit},Capacity:{available_capacity},Address:{center_address}{Style.RESET_ALL}')
+            else:
+              print(f'{Back.GREEN}{date_ref}=> Range From :{date},distric_id:{dist_id} Center:{center_name} ,Age:{min_age_limit},Capacity:{available_capacity},Address:{center_address}{Style.RESET_ALL}')
             winsound.Beep(200, 2000)
-            print(f'{Back.GREEN}{date_ref}=> Range From :{date},distric_id:{dist_id} Center:{center_name} ,Age:{min_age_limit},Capacity:{available_capacity},Address:{center_address}{Style.RESET_ALL}')
           print(f'{date_ref}=> Range From :{date},distric_id:{dist_id} Center:{center_name} ,Age:{min_age_limit},Capacity:{available_capacity},Address:{center_address}')
+          
   except Exception as e:
     
     print("Exception " + str(e))
