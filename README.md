@@ -7,6 +7,7 @@
 ```
  $ pip install requests argparse colorama
  $ python cowin_scripts.py --id id1,id2 (Using distric id or multiple ids)
+ $ Press CONTRL + C to quit the execution
 ```
 - Arguments and Optional arguments.
 ```
