@@ -69,7 +69,8 @@ try:
     for id in args.id.split(","):
       action(args.date,int(id),args.age,args.vdose,args.mode,args.beep)
     date_ref=datetime.datetime.now()
-    print(f'--------------------------Current Date - {date_ref}------Slots Starting From - {args.date}-------------------------------------------------------------------------------')
+    print(f'-------Current Date - {date_ref}------Slots Starting From - {args.date}----------Beep:{args.beep.upper()}------------Delay:{args.sleep}s-----------------')
     time.sleep(args.sleep)
 except KeyboardInterrupt:
     pass
+
