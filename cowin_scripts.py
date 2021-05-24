@@ -6,18 +6,18 @@ import time
 import colorama
 from colorama import Fore, Back, Style
 
-def print_details(date,dist_id,center_name,min_age_limit,available_capacity,available_capacity_detailed,center_address,beep):
+def print_details(date,dist_id,center_name,min_age_limit,available_capacity,available_capacity_detailed,center_address,beep,mode):
   if available_capacity == 0:
-    print(f'=> Date:{date}|distric_id:{dist_id}|Center:{center_name}|Age:{min_age_limit}|Capacity:{available_capacity}|Dose:{available_capacity_detailed}|Address:{center_address}.')
+    print(f'=> Date:{date}|{mode}:{dist_id}|Center:{center_name}|Age:{min_age_limit}|Capacity:{available_capacity}|Dose:{available_capacity_detailed}|Address:{center_address}.')
     return None
   elif available_capacity >10:
     if beep == "on":
       winsound.Beep(400, 2000) #it will make a beep
-    print(f'{Back.MAGENTA}=> Date:{date}|distric_id:{dist_id}|Center:{center_name}|Age:{min_age_limit}|Capacity:{available_capacity}|Dose:{available_capacity_detailed}|Address:{center_address}{Style.RESET_ALL}.')
+    print(f'{Back.MAGENTA}=> Date:{date}|{mode}:{dist_id}|Center:{center_name}|Age:{min_age_limit}|Capacity:{available_capacity}|Dose:{available_capacity_detailed}|Address:{center_address}{Style.RESET_ALL}.')
   else:
     if beep == "on":
       winsound.Beep(600, 2000) #it will make a beep
-    print(f'{Back.BLUE}=> Date:{date}|distric_id:{dist_id}|Center:{center_name}|Age:{min_age_limit}|Capacity:{available_capacity}|Dose:{available_capacity_detailed}|Address:{center_address}{Style.RESET_ALL}.')
+    print(f'{Back.BLUE}=> Date:{date}|{mode}:{dist_id}|Center:{center_name}|Age:{min_age_limit}|Capacity:{available_capacity}|Dose:{available_capacity_detailed}|Address:{center_address}{Style.RESET_ALL}.')
   
 
 def action(date,ids,age,dose,mode,beep):
@@ -44,7 +44,7 @@ def action(date,ids,age,dose,mode,beep):
           available_capacity=session[f'available_capacity_dose{dose}']
           available_capacity_detailed=f"Dose{dose}-{available_capacity}"
         if int(min_age_limit) == age:
-          print_details(date,ids,center_name,min_age_limit,available_capacity,available_capacity_detailed,center_address,beep)
+          print_details(date,ids,center_name,min_age_limit,available_capacity,available_capacity_detailed,center_address,beep,mode)
   except Exception as e:
     
     print("Exception " + str(e))
