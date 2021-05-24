@@ -8,16 +8,16 @@ from colorama import Fore, Back, Style
 
 def print_details(date,dist_id,center_name,min_age_limit,available_capacity,available_capacity_detailed,center_address,beep):
   if available_capacity == 0:
-    print(f'=>Range From :{date},distric_id:{dist_id} Center:{center_name} ,Age:{min_age_limit},Capacity:{available_capacity},Dose:{available_capacity_detailed},Address:{center_address}')
+    print(f'=> Date:{date}|distric_id:{dist_id}|Center:{center_name}|Age:{min_age_limit}|Capacity:{available_capacity}|Dose:{available_capacity_detailed}|Address:{center_address}')
     return None
   elif available_capacity >10:
     if beep == "on":
       winsound.Beep(400, 2000) #it will make a beep
-    print(f'{Back.MAGENTA}=> Range From :{date},distric_id:{dist_id} Center:{center_name} ,Age:{min_age_limit},Capacity:{available_capacity},Dose:{available_capacity_detailed},Address:{center_address}{Style.RESET_ALL}')
+    print(f'{Back.MAGENTA}=> Date:{date}|distric_id:{dist_id}|Center:{center_name}|Age:{min_age_limit}|Capacity:{available_capacity}|Dose:{available_capacity_detailed}|Address:{center_address}{Style.RESET_ALL}')
   else:
     if beep == "on":
       winsound.Beep(600, 2000) #it will make a beep
-    print(f'{Back.BLUE}=> Range From :{date},distric_id:{dist_id} Center:{center_name} ,Age:{min_age_limit},Capacity:{available_capacity},Dose:{available_capacity_detailed},Address:{center_address}{Style.RESET_ALL}')
+    print(f'{Back.BLUE}=> Date:{date}|distric_id:{dist_id}|Center:{center_name}|Age:{min_age_limit}|Capacity:{available_capacity}|Dose:{available_capacity_detailed}|Address:{center_address}{Style.RESET_ALL}')
   
 
 def action(date,ids,age,dose,mode,beep):
@@ -34,6 +34,7 @@ def action(date,ids,age,dose,mode,beep):
       center_address=centers['address']
       for session in centers['sessions']:
         min_age_limit=session['min_age_limit']
+        date=session['date']
         if dose == 0:
           available_capacity=session['available_capacity']
           dose1_slots=session['available_capacity_dose1']
@@ -68,11 +69,7 @@ try:
     for id in args.id.split(","):
       action(args.date,int(id),args.age,args.vdose,args.mode,args.beep)
     date_ref=datetime.datetime.now()
-    print(f'--------------------------{date_ref}------------------------------------------------------------------------------------------------------------------------')
+    print(f'--------------------------Current Date - {date_ref}------Slots Starting From - {args.date}-------------------------------------------------------------------------------')
     time.sleep(args.sleep)
 except KeyboardInterrupt:
     pass
-
-
-
-#####USAGE python cowin_scripts.py --id <id of the district or multiple ids seperated by comma> -a <Age/Optional and default is 18> -d <dd-mm-yy/optioanl/default is today's date>.#########
