@@ -19,7 +19,7 @@ Intended to use for volunteers who are helping to figure out and help people for
  $ python cowin_scripts.py --id id1 -d -m pin/districts <customer start date dd-mm-yyyy/default is todays date) 
  $ python cowin_scripts.py --id id1,id2 -m pin/districts -v 2 (For second dose only ,default is for both the dose)
  $ python cowin_scripts.py --id id1,id2 -m pin/districts -b off (Mute the beep,default is on).
- $ python cowin_scripts.py --id id1,id2 -m pin/districts -r full/Available (Display all slots or only when it has capacity,Default is Available)
+ $ python cowin_scripts.py --id id1,id2 -m pin/districts -r all/Available (Display all slots or only when it has capacity,Default is Available)
  $ python cowin_scripts.py --id 305,307 -s 15 -a 45 -d 24-05-2021  -m districts(Filtering data for 45 age groups with a duration of 15 and a default starting date)
  $python.exe cowin_scripts.py -i 673004,560066 -s 20 -a 18 -m pin (Filtering for age 18 ,with a sleep of 20 seconds and mode is based on pin numbers)
  $usage: cowin_scripts.py [-h] -i ID [-d DATE] [-a {18,45}] [-s SLEEP] [-v {0,1,2}] [-b {on,off}] -m {pin,districts} [-r {all,Available}]
