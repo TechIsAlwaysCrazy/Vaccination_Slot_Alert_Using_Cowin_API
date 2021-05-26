@@ -8,7 +8,7 @@ from colorama import Fore, Back, Style
 
 def print_details(date,dist_id,center_name,min_age_limit,available_capacity,available_capacity_detailed,center_address,beep,mode,report):
   if available_capacity == 0:
-    if report == "full":
+    if report == "all":
       print(f'=> Date:{date}|{mode}:{dist_id}|Center:{center_name}|Age:{min_age_limit}|Capacity:{available_capacity}|Dose:{available_capacity_detailed}|Address:{center_address}.')
       return None
   elif available_capacity >10:
