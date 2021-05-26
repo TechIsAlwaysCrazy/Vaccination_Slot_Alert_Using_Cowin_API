@@ -19,9 +19,27 @@ Intended to use for volunteers who are helping to figure out and help people for
  $ python cowin_scripts.py --id id1 -d -m pin/districts <customer start date dd-mm-yyyy/default is todays date) 
  $ python cowin_scripts.py --id id1,id2 -m pin/districts -v 2 (For second dose only ,default is for both the dose)
  $ python cowin_scripts.py --id id1,id2 -m pin/districts -b off (Mute the beep,default is on).
+ $ python cowin_scripts.py --id id1,id2 -m pin/districts -r full/Available (Display all slots or only when it has capacity,Default is Available)
  $ python cowin_scripts.py --id 305,307 -s 15 -a 45 -d 24-05-2021  -m districts(Filtering data for 45 age groups with a duration of 15 and a default starting date)
- $ C:/Users/rahul/AppData/Local/Programs/Python/Python39/python.exe cowin_scripts.py -i 673004,560066 -s 20 -a 18 -m pin (Filtering for age 18 ,with a sleep of 20 seconds and mode is based on pin numbers)
- $ usage: cowin_scripts.py [-h] -i ID [-d DATE] [-a {18,45}] [-s SLEEP] [-v {0,1,2}] -m {pin,districts} -b {on,off}
+ $python.exe cowin_scripts.py -i 673004,560066 -s 20 -a 18 -m pin (Filtering for age 18 ,with a sleep of 20 seconds and mode is based on pin numbers)
+ $usage: cowin_scripts.py [-h] -i ID [-d DATE] [-a {18,45}] [-s SLEEP] [-v {0,1,2}] [-b {on,off}] -m {pin,districts} [-r {all,Available}]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -i ID, --id ID        District IDs or Pin numbers.
+  -d DATE, --date DATE  Custom start date,Default is current date.
+  -a {18,45}, --age {18,45}
+                        Minimum age,Default is 18.
+  -s SLEEP, --sleep SLEEP
+                        Slpping time,Default is 5sec.
+  -v {0,1,2}, --vdose {0,1,2}
+                        Vaccine dose 1 or 2,Default is for both.
+  -b {on,off}, --beep {on,off}
+                        Make Beep on /off,Default is on.
+  -m {pin,districts}, --mode {pin,districts}
+                        Select the mode as pin or district.
+  -r {all,Available}, --report {all,Available}
+                        Display all slots or only with slots
  
 ```
 - Result
